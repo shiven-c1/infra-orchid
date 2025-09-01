@@ -82,7 +82,7 @@ const Admin = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/api/auth/me', {
+      const response = await fetch('https://infra-orchid-full.onrender.com/api/auth/me', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -113,7 +113,7 @@ const Admin = () => {
 
   const fetchProperties = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/properties');
+      const response = await fetch('https://infra-orchid-full.onrender.com/api/properties');
       if (response.ok) {
         const result = await response.json();
         if (result.success && result.data) {
@@ -134,7 +134,7 @@ const Admin = () => {
 
   const fetchJobs = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/jobs');
+      const response = await fetch('https://infra-orchid-full.onrender.com/api/jobs');
       if (response.ok) {
         const result = await response.json();
         if (result.success && result.data) {
@@ -155,7 +155,7 @@ const Admin = () => {
 
   const fetchExecutiveTeam = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/executive-team');
+      const response = await fetch('https://infra-orchid-full.onrender.com/api/executive-team');
       if (response.ok) {
         const result = await response.json();
         if (result.success && result.data) {
@@ -176,7 +176,7 @@ const Admin = () => {
 
   const fetchImages = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/images');
+      const response = await fetch('https://infra-orchid-full.onrender.com/api/images');
       if (response.ok) {
         const result = await response.json();
         if (result.success && result.data) {
@@ -207,7 +207,7 @@ const Admin = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/api/upload', {
+      const response = await fetch('https://infra-orchid-full.onrender.com/api/upload', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -255,7 +255,7 @@ const Admin = () => {
   const saveProperty = async (property: Property) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:5000/api/properties/${property.id}`, {
+      const response = await fetch(`https://infra-orchid-full.onrender.com/api/properties/${property.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -279,7 +279,7 @@ const Admin = () => {
   const saveJob = async (job: Job) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:5000/api/jobs/${job.id}`, {
+      const response = await fetch(`https://infra-orchid-full.onrender.com/api/jobs/${job.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -303,7 +303,7 @@ const Admin = () => {
   const saveExecutive = async (executive: ExecutiveTeam) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:5000/api/executive-team/${executive.id}`, {
+      const response = await fetch(`https://infra-orchid-full.onrender.com/api/executive-team/${executive.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -329,7 +329,7 @@ const Admin = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:5000/api/properties/${id}`, {
+      const response = await fetch(`https://infra-orchid-full.onrender.com/api/properties/${id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -352,7 +352,7 @@ const Admin = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:5000/api/jobs/${id}`, {
+      const response = await fetch(`https://infra-orchid-full.onrender.com/api/jobs/${id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -375,7 +375,7 @@ const Admin = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:5000/api/executive-team/${id}`, {
+      const response = await fetch(`https://infra-orchid-full.onrender.com/api/executive-team/${id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -631,7 +631,7 @@ const Admin = () => {
                         variant="destructive"
                         onClick={async () => {
                           const token = localStorage.getItem('token');
-                          await fetch(`http://localhost:5000/api/images/${image.filename}`, {
+                          await fetch(`https://infra-orchid-full.onrender.com/api/images/${image.filename}`, {
                             method: 'DELETE',
                             headers: { 'Authorization': `Bearer ${token}` }
                           });
