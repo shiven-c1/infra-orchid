@@ -1,7 +1,7 @@
 # Root Netlify configuration for the entire project
 [build]
   publish = "orchid-haven-showcase/dist"
-  command = "cd orchid-haven-showcase && npm run build"
+  command = "cd orchid-haven-showcase && npm install && npm run build"
 
 # Handle SPA routing - redirect all routes to index.html
 [[redirects]]
