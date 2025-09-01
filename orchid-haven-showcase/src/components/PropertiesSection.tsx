@@ -2,6 +2,7 @@ import PropertyCard from "./PropertyCard";
 import PropertyDetails from "./PropertyDetails";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
+import { API_ENDPOINTS } from "@/config/api";
 
 interface PropertiesSectionProps {
   onCall: () => void;
@@ -23,7 +24,7 @@ const PropertiesSection = ({ onCall, onWhatsApp, searchFilters }: PropertiesSect
 
   const fetchProperties = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/properties');
+      const response = await fetch(API_ENDPOINTS.PROPERTIES);
       if (response.ok) {
         const result = await response.json();
         if (result.success && result.data) {

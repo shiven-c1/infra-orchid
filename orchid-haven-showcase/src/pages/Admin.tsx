@@ -20,6 +20,7 @@ import {
   Save,
   X
 } from 'lucide-react';
+import { API_ENDPOINTS } from '@/config/api';
 
 interface Property {
   id: number;

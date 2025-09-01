@@ -2,48 +2,54 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
+import { API_ENDPOINTS } from "@/config/api";
 import { Eye, EyeOff, Lock, User } from "lucide-react";
 
 const Login = () => {
-  const [credentials, setCredentials] = useState({ username: '', password: '' });
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const { toast } = useToast();
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
     try {
-      const response = await fetch('http://localhost:5000/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(credentials)
+      const response = await fetch(API_ENDPOINTS.LOGIN, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
       });
 
       const data = await response.json();
 
-      if (response.ok) {
-        localStorage.setItem('token', data.token);
-        localStorage.setItem('user', JSON.stringify(data.user));
-        toast({ 
-          title: 'Success', 
-          description: 'Login successful! Redirecting to admin dashboard...' 
+      if (data.success) {
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("user", JSON.stringify(data.user));
+        toast({
+          title: "Success",
+          description: "Login successful!",
         });
-        setTimeout(() => navigate('/admin'), 1000);
+        navigate("/admin");
       } else {
-        toast({ 
-          title: 'Error', 
-          description: data.message || 'Login failed' 
+        toast({
+          title: "Error",
+          description: data.message || "Login failed",
+          variant: "destructive",
         });
       }
     } catch (error) {
-      toast({ 
-        title: 'Error', 
-        description: 'Network error. Please check if backend is running.' 
+      toast({
+        title: "Error",
+        description: "Network error. Please try again.",
+        variant: "destructive",
       });
     } finally {
       setLoading(false);
@@ -62,7 +68,7 @@ const Login = () => {
         </CardHeader>
         
         <CardContent>
-          <form onSubmit={handleLogin} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2">
               <label className="text-sm font-medium text-gray-700">Username</label>
               <div className="relative">
@@ -70,8 +76,8 @@ const Login = () => {
                 <Input
                   type="text"
                   placeholder="Enter username"
-                  value={credentials.username}
-                  onChange={(e) => setCredentials({ ...credentials, username: e.target.value })}
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
                   className="pl-10"
                   required
                 />
@@ -85,8 +91,8 @@ const Login = () => {
                 <Input
                   type={showPassword ? "text" : "password"}
                   placeholder="Enter password"
-                  value={credentials.password}
-                  onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   className="pl-10 pr-10"
                   required
                 />

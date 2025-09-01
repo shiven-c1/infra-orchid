@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { useState, useEffect } from "react";
+import { API_ENDPOINTS } from "@/config/api";
 
 type Job = {
   id: string;
@@ -36,7 +37,7 @@ const Career = () => {
 
   const fetchJobs = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/jobs');
+      const response = await fetch(API_ENDPOINTS.JOBS);
       if (response.ok) {
         const result = await response.json();
         if (result.success && result.data) {

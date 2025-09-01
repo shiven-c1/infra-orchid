@@ -6,6 +6,7 @@ import { Phone, MessageCircle } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import Footer from "@/components/Footer";
 import { useState, useEffect } from "react";
+import { API_ENDPOINTS } from "@/config/api";
 
 interface ExecutiveTeam {
   id: number;
@@ -26,7 +27,7 @@ const TheGroup = () => {
 
   const fetchExecutiveTeam = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/executive-team');
+      const response = await fetch(API_ENDPOINTS.EXECUTIVE_TEAM);
       if (response.ok) {
         const result = await response.json();
         if (result.success && result.data) {
