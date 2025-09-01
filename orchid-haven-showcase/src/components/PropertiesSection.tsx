@@ -1,4 +1,4 @@
-import PropertyCard from "./PropertyCard";
+﻿import PropertyCard from "./PropertyCard";
 import PropertyDetails from "./PropertyDetails";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
@@ -30,15 +30,15 @@ const PropertiesSection = ({ onCall, onWhatsApp, searchFilters }: PropertiesSect
         if (result.success && result.data) {
           setProperties(result.data);
         } else {
-          console.error('Invalid data format received');
+          console.error("Invalid data format received");
           setProperties([]);
         }
       } else {
-        console.error('Failed to fetch properties');
+        console.error("Failed to fetch properties");
         setProperties([]);
       }
     } catch (error) {
-      console.error('Error fetching properties:', error);
+      console.error("Error fetching properties:", error);
       setProperties([]);
     } finally {
       setLoading(false);
@@ -101,7 +101,7 @@ const PropertiesSection = ({ onCall, onWhatsApp, searchFilters }: PropertiesSect
     const number = index <= 3 ? "918459018078" : "918830892682"; // +91 removed for wa.me format
     const raw = propertyTitle
       ? `Hi, I am interested in ${propertyTitle} property. Please share details and next steps.`
-      : "Hi! I'm interested in your premium properties. Please provide more details.";
+      : "Hi! I am interested in your premium properties. Please provide more details.";
     const message = encodeURIComponent(raw);
     window.open(`https://wa.me/${number}?text=${message}`, "_blank");
   };
@@ -130,7 +130,7 @@ const PropertiesSection = ({ onCall, onWhatsApp, searchFilters }: PropertiesSect
             <select
               value={activeFilter}
               onChange={(e) => setActiveFilter(e.target.value)}
-              className="appearance-none bg-white border-2 border-[#4c1d95] rounded-lg px-4 sm:px-6 py-3 text-base sm:text-lg font-semibold text-[#4c1d95] focus:outline-none focus:ring-2 focus:ring-[#4c1d95] focus:border-transparent cursor-pointer w-full sm:min-w-[250px] shadow-lg hover:shadow-xl transition-all duration-300"
+              className="appearance-none bg-white border-2 border-[#4c1d95] rounded-lg px-4 sm:px-6 py-3 text-base sm:text-lg font-semibold text-[#4c1d95] focus:outline-none focus:ring-2 focus:ring-[#4c1d95] focus:border-transparent cursor-pointer w-full sm:min-w-[250px] shadow-lg hover:shadow-xl transition-all duration-300 text-center"
             >
               <option value="All">Filter by BHK - All Properties</option>
               <option value="4BHK">Filter by BHK - 4BHK</option>
@@ -149,7 +149,7 @@ const PropertiesSection = ({ onCall, onWhatsApp, searchFilters }: PropertiesSect
             <select
               value={locationFilter}
               onChange={(e) => setLocationFilter(e.target.value)}
-              className="appearance-none bg-white border-2 border-[#4c1d95] rounded-lg px-4 sm:px-6 py-3 text-base sm:text-lg font-semibold text-[#4c1d95] focus:outline-none focus:ring-2 focus:ring-[#4c1d95] focus:border-transparent cursor-pointer w-full sm:min-w-[250px] shadow-lg hover:shadow-xl transition-all duration-300"
+              className="appearance-none bg-white border-2 border-[#4c1d95] rounded-lg px-4 sm:px-6 py-3 text-base sm:text-lg font-semibold text-[#4c1d95] focus:outline-none focus:ring-2 focus:ring-[#4c1d95] focus:border-transparent cursor-pointer w-full sm:min-w-[250px] shadow-lg hover:shadow-xl transition-all duration-300 text-center"
             >
               <option value="All">All Locations</option>
               <option value="Shivaji Nagar">Shivaji Nagar</option>
