@@ -605,7 +605,7 @@ app.post('/api/auth/login',
         }
       });
     } catch (error) {
-      logger.error('Login error', error);
+      logger.logError('Login error', error);
       res.status(500).json({
         success: false,
         message: 'Internal server error'
@@ -630,7 +630,7 @@ app.get('/api/properties', (req, res) => {
       count: properties.length
     });
   } catch (error) {
-    logger.error('Error fetching properties', error);
+    logger.logError('Error fetching properties', error);
     res.status(500).json({
       success: false,
       message: 'Internal server error'
@@ -658,7 +658,7 @@ app.post('/api/properties',
         data: newProperty
       });
     } catch (error) {
-      logger.error('Error creating property', error);
+      logger.logError('Error creating property', error);
       res.status(500).json({
         success: false,
         message: 'Internal server error'
@@ -693,7 +693,7 @@ app.put('/api/properties/:id',
         data: properties[index]
       });
     } catch (error) {
-      logger.error('Error updating property', error);
+      logger.logError('Error updating property', error);
       res.status(500).json({
         success: false,
         message: 'Internal server error'
@@ -722,7 +722,7 @@ app.delete('/api/properties/:id', authenticateToken, (req, res) => {
       message: 'Property deleted successfully'
     });
   } catch (error) {
-    logger.error('Error deleting property', error);
+    logger.logError('Error deleting property', error);
     res.status(500).json({
       success: false,
       message: 'Internal server error'
@@ -739,7 +739,7 @@ app.get('/api/jobs', (req, res) => {
       count: jobs.length
     });
   } catch (error) {
-    logger.error('Error fetching jobs', error);
+    logger.logError('Error fetching jobs', error);
     res.status(500).json({
       success: false,
       message: 'Internal server error'
@@ -767,7 +767,7 @@ app.post('/api/jobs',
         data: newJob
       });
     } catch (error) {
-      logger.error('Error creating job', error);
+      logger.logError('Error creating job', error);
       res.status(500).json({
         success: false,
         message: 'Internal server error'
@@ -801,7 +801,7 @@ app.put('/api/jobs/:id',
         data: jobs[index]
       });
     } catch (error) {
-      logger.error('Error updating job', error);
+      logger.logError('Error updating job', error);
       res.status(500).json({
         success: false,
         message: 'Internal server error'
@@ -830,7 +830,7 @@ app.delete('/api/jobs/:id', authenticateToken, (req, res) => {
       message: 'Job deleted successfully'
     });
   } catch (error) {
-    logger.error('Error deleting job', error);
+    logger.logError('Error deleting job', error);
     res.status(500).json({
       success: false,
       message: 'Internal server error'
@@ -847,7 +847,7 @@ app.get('/api/executive-team', (req, res) => {
       count: executiveTeam.length
     });
   } catch (error) {
-    logger.error('Error fetching executive team', error);
+    logger.logError('Error fetching executive team', error);
     res.status(500).json({
       success: false,
       message: 'Internal server error'
@@ -875,7 +875,7 @@ app.post('/api/executive-team',
         data: newExecutive
       });
     } catch (error) {
-      logger.error('Error creating executive', error);
+      logger.logError('Error creating executive', error);
       res.status(500).json({
         success: false,
         message: 'Internal server error'
@@ -909,7 +909,7 @@ app.put('/api/executive-team/:id',
         data: executiveTeam[index]
       });
     } catch (error) {
-      logger.error('Error updating executive', error);
+      logger.logError('Error updating executive', error);
       res.status(500).json({
         success: false,
         message: 'Internal server error'
@@ -938,7 +938,7 @@ app.delete('/api/executive-team/:id', authenticateToken, (req, res) => {
       message: 'Executive deleted successfully'
     });
   } catch (error) {
-    logger.error('Error deleting executive', error);
+    logger.logError('Error deleting executive', error);
     res.status(500).json({
       success: false,
       message: 'Internal server error'
@@ -963,7 +963,7 @@ app.get('/api/images', (req, res) => {
       count: images.length
     });
   } catch (error) {
-    logger.error('Error fetching images', error);
+    logger.logError('Error fetching images', error);
     res.status(500).json({
       success: false,
       message: 'Failed to get images'
@@ -990,7 +990,7 @@ app.delete('/api/images/:filename', authenticateToken, (req, res) => {
       });
     }
   } catch (error) {
-    logger.error('Error deleting image', error);
+    logger.logError('Error deleting image', error);
     res.status(500).json({
       success: false,
       message: 'Failed to delete image'
@@ -1029,7 +1029,7 @@ app.post('/api/upload',
         }
       });
     } catch (error) {
-      logger.error('Upload error', error);
+      logger.logError('Upload error', error);
       res.status(500).json({
         success: false,
         message: 'Upload failed'
@@ -1040,7 +1040,7 @@ app.post('/api/upload',
 
 // Error handling middleware
 app.use((err, req, res, next) => {
-  logger.error('Unhandled error', err);
+  logger.logError('Unhandled error', err);
   
   if (err instanceof multer.MulterError) {
     if (err.code === 'LIMIT_FILE_SIZE') {
