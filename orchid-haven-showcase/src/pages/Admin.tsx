@@ -70,6 +70,7 @@ const Admin = () => {
 
   // Check authentication on component mount
   useEffect(() => {
+    console.log('Admin component mounted - routing is working!');
     checkAuthentication();
   }, []);
 

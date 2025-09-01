@@ -130,12 +130,16 @@ const PropertiesSection = ({ onCall, onWhatsApp, searchFilters }: PropertiesSect
             <select
               value={activeFilter}
               onChange={(e) => setActiveFilter(e.target.value)}
-              className="appearance-none bg-white border-2 border-[#4c1d95] rounded-lg px-4 sm:px-6 py-3 text-base sm:text-lg font-semibold text-[#4c1d95] focus:outline-none focus:ring-2 focus:ring-[#4c1d95] focus:border-transparent cursor-pointer w-full sm:min-w-[250px] shadow-lg hover:shadow-xl transition-all duration-300 text-center"
+              className="appearance-none bg-white border-2 border-[#4c1d95] rounded-lg px-4 sm:px-6 py-3 text-base sm:text-lg font-semibold text-[#4c1d95] focus:outline-none focus:ring-2 focus:ring-[#4c1d95] focus:border-transparent cursor-pointer w-full sm:min-w-[250px] shadow-lg hover:shadow-xl transition-all duration-300 text-center sm:text-center"
+              style={{ 
+                textAlign: 'center',
+                textAlignLast: 'center'
+              } as React.CSSProperties}
             >
-              <option value="All">Filter by BHK - All Properties</option>
-              <option value="4BHK">Filter by BHK - 4BHK</option>
-              <option value="3BHK">Filter by BHK - 3BHK</option>
-              <option value="Ready Possession">Filter by BHK - Ready Possession</option>
+              <option value="All" style={{ textAlign: 'center' }}>Filter by BHK - All Properties</option>
+              <option value="4BHK" style={{ textAlign: 'center' }}>Filter by BHK - 4BHK</option>
+              <option value="3BHK" style={{ textAlign: 'center' }}>Filter by BHK - 3BHK</option>
+              <option value="Ready Possession" style={{ textAlign: 'center' }}>Filter by BHK - Ready Possession</option>
             </select>
             <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
               <svg className="w-4 h-4 sm:w-5 sm:h-5 text-[#4c1d95]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -149,16 +153,20 @@ const PropertiesSection = ({ onCall, onWhatsApp, searchFilters }: PropertiesSect
             <select
               value={locationFilter}
               onChange={(e) => setLocationFilter(e.target.value)}
-              className="appearance-none bg-white border-2 border-[#4c1d95] rounded-lg px-4 sm:px-6 py-3 text-base sm:text-lg font-semibold text-[#4c1d95] focus:outline-none focus:ring-2 focus:ring-[#4c1d95] focus:border-transparent cursor-pointer w-full sm:min-w-[250px] shadow-lg hover:shadow-xl transition-all duration-300 text-center"
+              className="appearance-none bg-white border-2 border-[#4c1d95] rounded-lg px-4 sm:px-6 py-3 text-base sm:text-lg font-semibold text-[#4c1d95] focus:outline-none focus:ring-2 focus:ring-[#4c1d95] focus:border-transparent cursor-pointer w-full sm:min-w-[250px] shadow-lg hover:shadow-xl transition-all duration-300 text-center sm:text-center"
+              style={{ 
+                textAlign: 'center',
+                textAlignLast: 'center'
+              } as React.CSSProperties}
             >
-              <option value="All">All Locations</option>
-              <option value="Shivaji Nagar">Shivaji Nagar</option>
-              <option value="Dharampeth">Dharampeth</option>
-              <option value="Laxmi Nagar">Laxmi Nagar</option>
-              <option value="Hingna Naka">Hingna Naka</option>
-              <option value="Manish Nagar">Manish Nagar</option>
-              <option value="Abhayankar Nagar">Abhayankar Nagar</option>
-              <option value="Tilak Nagar">Tilak Nagar</option>
+              <option value="All" style={{ textAlign: 'center' }}>All Locations</option>
+              <option value="Shivaji Nagar" style={{ textAlign: 'center' }}>Shivaji Nagar</option>
+              <option value="Dharampeth" style={{ textAlign: 'center' }}>Dharampeth</option>
+              <option value="Laxmi Nagar" style={{ textAlign: 'center' }}>Laxmi Nagar</option>
+              <option value="Hingna Naka" style={{ textAlign: 'center' }}>Hingna Naka</option>
+              <option value="Manish Nagar" style={{ textAlign: 'center' }}>Manish Nagar</option>
+              <option value="Abhayankar Nagar" style={{ textAlign: 'center' }}>Abhayankar Nagar</option>
+              <option value="Tilak Nagar" style={{ textAlign: 'center' }}>Tilak Nagar</option>
             </select>
             <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
               <svg className="w-4 h-4 sm:w-5 sm:h-5 text-[#4c1d95]" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -2,7 +2,55 @@
   publish = "dist"
   command = "npm run build"
 
+# Force cache clearing and proper SPA routing
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+    Pragma = "no-cache"
+    Expires = "0"
+
+# Handle SPA routing - redirect all routes to index.html
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+  force = true
+
+# Specific redirects for admin and login pages with force
+[[redirects]]
+  from = "/admin"
+  to = "/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/login"
+  to = "/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/the-group"
+  to = "/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/career"
+  to = "/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/test"
+  to = "/index.html"
+  status = 200
+  force = true
+
+# Handle 404 errors
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 404
+  force = true
