@@ -26,7 +26,7 @@ app.use(securityMiddleware.compression);
 // CORS configuration for production
 const corsOptions = {
   origin: process.env.NODE_ENV === 'production' 
-    ? [process.env.FRONTEND_URL || 'https://yourdomain.com']
+    ? [process.env.FRONTEND_URL || 'https://orchid-landmark.netlify.app']
     : ['http://localhost:5173', 'http://localhost:3000', 'http://localhost:8080'],
   credentials: true,
   optionsSuccessStatus: 200
