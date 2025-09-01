@@ -113,40 +113,84 @@ const Admin = () => {
   const fetchProperties = async () => {
     try {
       const response = await fetch('http://localhost:5000/api/properties');
-      const data = await response.json();
-      setProperties(data);
+      if (response.ok) {
+        const result = await response.json();
+        if (result.success && result.data) {
+          setProperties(result.data);
+        } else {
+          console.error('Invalid data format received');
+          setProperties([]);
+        }
+      } else {
+        console.error('Failed to fetch properties');
+        setProperties([]);
+      }
     } catch (error) {
       toast({ title: 'Error', description: 'Failed to fetch properties' });
+      setProperties([]);
     }
   };
 
   const fetchJobs = async () => {
     try {
       const response = await fetch('http://localhost:5000/api/jobs');
-      const data = await response.json();
-      setJobs(data);
+      if (response.ok) {
+        const result = await response.json();
+        if (result.success && result.data) {
+          setJobs(result.data);
+        } else {
+          console.error('Invalid data format received');
+          setJobs([]);
+        }
+      } else {
+        console.error('Failed to fetch jobs');
+        setJobs([]);
+      }
     } catch (error) {
       toast({ title: 'Error', description: 'Failed to fetch jobs' });
+      setJobs([]);
     }
   };
 
   const fetchExecutiveTeam = async () => {
     try {
       const response = await fetch('http://localhost:5000/api/executive-team');
-      const data = await response.json();
-      setExecutiveTeam(data);
+      if (response.ok) {
+        const result = await response.json();
+        if (result.success && result.data) {
+          setExecutiveTeam(result.data);
+        } else {
+          console.error('Invalid data format received');
+          setExecutiveTeam([]);
+        }
+      } else {
+        console.error('Failed to fetch executive team');
+        setExecutiveTeam([]);
+      }
     } catch (error) {
       toast({ title: 'Error', description: 'Failed to fetch executive team' });
+      setExecutiveTeam([]);
     }
   };
 
   const fetchImages = async () => {
     try {
       const response = await fetch('http://localhost:5000/api/images');
-      const data = await response.json();
-      setUploadedImages(data);
+      if (response.ok) {
+        const result = await response.json();
+        if (result.success && result.data) {
+          setUploadedImages(result.data);
+        } else {
+          console.error('Invalid data format received');
+          setUploadedImages([]);
+        }
+      } else {
+        console.error('Failed to fetch images');
+        setUploadedImages([]);
+      }
     } catch (error) {
       toast({ title: 'Error', description: 'Failed to fetch images' });
+      setUploadedImages([]);
     }
   };
 

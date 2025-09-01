@@ -38,13 +38,24 @@ const Career = () => {
     try {
       const response = await fetch('http://localhost:5000/api/jobs');
       if (response.ok) {
-        const data = await response.json();
-        setJobs(data);
-        if (data.length > 0) {
-          setForm(prev => ({ ...prev, position: data[0].title }));
+        const result = await response.json();
+        if (result.success && result.data) {
+          setJobs(result.data);
+          if (result.data.length > 0) {
+            setForm(prev => ({ ...prev, position: result.data[0].title }));
+          }
+        } else {
+          console.error('Invalid data format received');
+          setJobs([]);
+          toast({
+            title: 'Error',
+            description: 'Invalid data format received.',
+            variant: 'destructive'
+          });
         }
       } else {
         console.error('Failed to fetch jobs');
+        setJobs([]);
         toast({
           title: 'Error',
           description: 'Failed to load jobs. Please try again later.',
@@ -53,6 +64,7 @@ const Career = () => {
       }
     } catch (error) {
       console.error('Error fetching jobs:', error);
+      setJobs([]);
       toast({
         title: 'Error',
         description: 'Network error. Please check your connection.',

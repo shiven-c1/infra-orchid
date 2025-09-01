@@ -25,13 +25,20 @@ const PropertiesSection = ({ onCall, onWhatsApp, searchFilters }: PropertiesSect
     try {
       const response = await fetch('http://localhost:5000/api/properties');
       if (response.ok) {
-        const data = await response.json();
-        setProperties(data);
+        const result = await response.json();
+        if (result.success && result.data) {
+          setProperties(result.data);
+        } else {
+          console.error('Invalid data format received');
+          setProperties([]);
+        }
       } else {
         console.error('Failed to fetch properties');
+        setProperties([]);
       }
     } catch (error) {
       console.error('Error fetching properties:', error);
+      setProperties([]);
     } finally {
       setLoading(false);
     }
@@ -71,7 +78,7 @@ const PropertiesSection = ({ onCall, onWhatsApp, searchFilters }: PropertiesSect
     return filtered;
   };
 
-  const filteredProperties = getFilteredProperties();
+  const filteredProperties = getFilteredProperties() || [];
 
   if (loading) {
     return (

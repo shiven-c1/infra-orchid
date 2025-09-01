@@ -27,12 +27,22 @@ const TheGroup = () => {
   const fetchExecutiveTeam = async () => {
     try {
       const response = await fetch('http://localhost:5000/api/executive-team');
-      const data = await response.json();
-      console.log('Executive team data:', data); // Debug log
-      setExecutiveTeam(data);
-      setLoading(false);
+      if (response.ok) {
+        const result = await response.json();
+        if (result.success && result.data) {
+          setExecutiveTeam(result.data);
+        } else {
+          console.error('Invalid data format received');
+          setExecutiveTeam([]);
+        }
+      } else {
+        console.error('Failed to fetch executive team');
+        setExecutiveTeam([]);
+      }
     } catch (error) {
       console.error('Failed to fetch executive team:', error);
+      setExecutiveTeam([]);
+    } finally {
       setLoading(false);
     }
   };
